@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.getkeepsafe.dexcount'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+
+        versionCode globalConfiguration["androidVersionCode"]
+        versionName globalConfiguration["androidVersionName"]
+        testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    }
+}
+
+dependencies {
+    def dependencies = rootProject.ext.uiDependencies
+    def testDependencies = rootProject.ext.uiTestDependencies
+
+    implementation project(':cache')
+    implementation project(':data')
+    implementation project(':presentation')
+    implementation project(':remote')
+
+    implementation dependencies.archExtensions
+    implementation dependencies.dagger
+    implementation dependencies.daggerSupport
+    implementation dependencies.kotlin
+    implementation dependencies.roomRxJava
+    implementation dependencies.rxAndroid
+    implementation dependencies.rxKotlin
+    implementation dependencies.supportLib
+
+    kapt dependencies.archCompiler
+    kapt dependencies.daggerCompiler
+    kapt dependencies.daggerProcessor
+
+    testImplementation testDependencies.junit
+
+    androidTestImplementation testDependencies.espresso
+    androidTestImplementation testDependencies.espressoRunner
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">koro</string>
+    <string name="button_load_quote">Load quote</string>
+    <string name="button_save_quote">Save quote</string>
+    <string name="menu_logout">logout</string>
+    <string name="button_clear_quote">Clear</string>
+</resources>

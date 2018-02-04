@@ -1,0 +1,114 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext {
+    //Android
+    androidCompileSdkVersion = 26
+    androidMinSdkVersion = 16
+    androidTargetSdkVersion = 26
+
+    //Libraries
+    appCompatVersion = '27.0.2'
+    androidArchitectureVersion = '1.1.0'
+    daggerVersion = '2.11'
+    gsonVersion = '2.8.2'
+    okHttpVersion = '3.9.1'
+    javaxInjectVersion = '1'
+    kotlinVersion = '1.2.21'
+    retrofitVersion = '2.3.0'
+    roomVersion = '1.0.0'
+    rxAndroidVersion = '2.0.1'
+    rxJavaVersion = '2.1.9'
+    rxKotlinVersion = '2.2.0'
+
+    //Testing
+    espressoRunnerVersion = '1.0.0'
+    espressoVersion = '3.0.1'
+    jUnitVersion = '4.12'
+
+    cacheDependencies = [
+            javaxInject : "javax.inject:javax.inject:${javaxInjectVersion}",
+            kotlin      : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            room        : "android.arch.persistence.room:runtime:${roomVersion}",
+            roomCompiler: "android.arch.persistence.room:compiler:${roomVersion}",
+            roomRxJava  : "android.arch.persistence.room:rxjava2:${roomVersion}",
+            rxKotlin    : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+    ]
+
+    cacheTestDependencies = [
+            junit: "junit:junit:${jUnitVersion}"
+    ]
+
+    dataDependencies = [
+            javaxInject: "javax.inject:javax.inject:${javaxInjectVersion}",
+            kotlin     : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            rxKotlin   : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+    ]
+
+    dataTestDependencies = [
+            junit: "junit:junit:${jUnitVersion}"
+    ]
+
+    domainDependencies = [
+            javaxInject: "javax.inject:javax.inject:${javaxInjectVersion}",
+            kotlin     : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            rxKotlin   : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+    ]
+
+    domainTestDependencies = [
+            junit: "junit:junit:${jUnitVersion}"
+    ]
+
+    presentationDependencies = [
+            archRuntime   : "android.arch.lifecycle:runtime:${androidArchitectureVersion}",
+            archExtensions: "android.arch.lifecycle:extensions:${androidArchitectureVersion}",
+            archCompiler  : "android.arch.lifecycle:compiler:${androidArchitectureVersion}",
+            javaxInject   : "javax.inject:javax.inject:${javaxInjectVersion}",
+            kotlin        : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            rxKotlin      : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+    ]
+
+    presentationTestDependencies = [
+            junit: "junit:junit:${jUnitVersion}"
+    ]
+
+    remoteDependencies = [
+            gson             : "com.google.code.gson:gson:${gsonVersion}",
+            javaxInject      : "javax.inject:javax.inject:${javaxInjectVersion}",
+            kotlin           : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            okHttp           : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            okHttpLogger     : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+            retrofit         : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+            retrofitConverter: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            retrofitAdapter  : "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
+            rxKotlin         : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+    ]
+
+    remoteTestDependencies = [
+            junit: "junit:junit:${jUnitVersion}"
+    ]
+
+    uiDependencies = [
+            archExtensions : "android.arch.lifecycle:extensions:${androidArchitectureVersion}",
+            archCompiler   : "android.arch.lifecycle:compiler:${androidArchitectureVersion}",
+            dagger         : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            daggerProcessor: "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            daggerSupport  : "com.google.dagger:dagger-android-support:${daggerVersion}",
+            kotlin         : "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            roomRxJava     : "android.arch.persistence.room:rxjava2:${roomVersion}",
+            rxAndroid      : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxKotlin       : "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            supportLib     : "com.android.support:appcompat-v7:${appCompatVersion}"
+    ]
+
+    uiTestDependencies = [
+            espresso      : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            espressoRunner: "com.android.support.test:runner:${espressoRunnerVersion}",
+            junit         : "junit:junit:${jUnitVersion}"
+    ]
+}

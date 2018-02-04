@@ -1,0 +1,6 @@
+include ':cache'
+include ':data'
+include ':domain'
+include ':presentation'
+include ':remote'
+include ':ui'
