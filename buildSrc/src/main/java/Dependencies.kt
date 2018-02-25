@@ -25,6 +25,9 @@ object Versions {
     const val espressoRunner = "1.0.0"
     const val espresso = "3.0.1"
     const val jUnit = "4.12"
+
+    //App Center
+    const val appCenterSdk = "1.3.0"
 }
 
 object Deps {
@@ -55,4 +58,7 @@ object Deps {
     const val espressoRunner = "com.android.support.test:runner:${Versions.espressoRunner}"
 
     const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+
+    const val appCenterAnalytics = "com.microsoft.appcenter:appcenter-analytics:${Versions.appCenterSdk}"
+    const val appCenterCrashes = "com.microsoft.appcenter:appcenter-crashes:${Versions.appCenterSdk}"
 }
