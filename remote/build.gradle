@@ -1,20 +1,17 @@
 apply plugin: 'kotlin'
 
 dependencies {
-    def dependencies = rootProject.ext.remoteDependencies
-    def testDependencies = rootProject.ext.remoteTestDependencies
-
     implementation project(':data')
 
-    implementation dependencies.gson
-    implementation dependencies.javaxInject
-    implementation dependencies.kotlin
-    implementation dependencies.okHttp
-    implementation dependencies.okHttpLogger
-    implementation dependencies.retrofit
-    implementation dependencies.retrofitAdapter
-    implementation dependencies.retrofitConverter
-    implementation dependencies.rxKotlin
+    implementation Deps.gson
+    implementation Deps.javaxInject
+    implementation Deps.kotlin
+    implementation Deps.okHttp
+    implementation Deps.okHttpLogger
+    implementation Deps.retrofit
+    implementation Deps.retrofitAdapter
+    implementation Deps.retrofitConverter
+    implementation Deps.rxKotlin
 
-    testImplementation testDependencies.junit
+    testImplementation Deps.junit
 }

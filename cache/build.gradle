@@ -3,17 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    compileSdkVersion Versions.androidCompileSdk
 
     defaultConfig {
-        minSdkVersion globalConfiguration["androidMinSdkVersion"]
-        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        minSdkVersion Versions.androidMinSdk
+        targetSdkVersion Versions.androidTargetSdk
 
-        versionCode globalConfiguration["androidVersionCode"]
-        versionName globalConfiguration["androidVersionName"]
-        testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
+        versionCode Versions.androidVersionCode
+        versionName Versions.androidVersionName
+        testInstrumentationRunner Deps.testInstrumentationRunner
     }
 
     compileOptions {
@@ -30,17 +28,14 @@ android {
 }
 
 dependencies {
-    def dependencies = rootProject.ext.cacheDependencies
-    def testDependencies = rootProject.ext.cacheTestDependencies
-
     implementation project(':data')
 
-    implementation dependencies.javaxInject
-    implementation dependencies.kotlin
-    implementation dependencies.room
-    implementation dependencies.rxKotlin
+    implementation Deps.javaxInject
+    implementation Deps.kotlin
+    implementation Deps.room
+    implementation Deps.rxKotlin
 
-    kapt dependencies.roomCompiler
+    kapt Deps.roomCompiler
 
-    testImplementation testDependencies.junit
+    testImplementation Deps.junit
 }

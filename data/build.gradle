@@ -1,14 +1,11 @@
 apply plugin: 'kotlin'
 
 dependencies {
-    def dependencies = rootProject.ext.dataDependencies
-    def testDependencies = rootProject.ext.dataTestDependencies
-
     implementation project(':domain')
 
-    implementation dependencies.javaxInject
-    implementation dependencies.kotlin
-    implementation dependencies.rxKotlin
+    implementation Deps.javaxInject
+    implementation Deps.kotlin
+    implementation Deps.rxKotlin
 
-    testImplementation testDependencies.junit
+    testImplementation Deps.junit
 }

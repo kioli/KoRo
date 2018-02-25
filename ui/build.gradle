@@ -5,17 +5,15 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
-    def globalConfiguration = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    compileSdkVersion Versions.androidCompileSdk
 
     defaultConfig {
-        minSdkVersion globalConfiguration["androidMinSdkVersion"]
-        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        minSdkVersion Versions.androidMinSdk
+        targetSdkVersion Versions.androidTargetSdk
 
-        versionCode globalConfiguration["androidVersionCode"]
-        versionName globalConfiguration["androidVersionName"]
-        testInstrumentationRunner globalConfiguration["testInstrumentationRunner"]
+        versionCode Versions.androidVersionCode
+        versionName Versions.androidVersionName
+        testInstrumentationRunner Deps.testInstrumentationRunner
     }
 
     compileOptions {
@@ -37,34 +35,31 @@ kapt {
 
 configurations.all {
     resolutionStrategy {
-        force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        force "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     }
 }
 
 dependencies {
-    def dependencies = rootProject.ext.uiDependencies
-    def testDependencies = rootProject.ext.uiTestDependencies
-
     implementation project(':cache')
     implementation project(':data')
     implementation project(':presentation')
     implementation project(':remote')
 
-    implementation dependencies.archExtensions
-    implementation dependencies.dagger
-    implementation dependencies.daggerSupport
-    implementation dependencies.kotlin
-    implementation dependencies.roomRxJava
-    implementation dependencies.rxAndroid
-    implementation dependencies.rxKotlin
-    implementation dependencies.supportLib
+    implementation Deps.archExtensions
+    implementation Deps.dagger
+    implementation Deps.daggerSupport
+    implementation Deps.kotlin
+    implementation Deps.roomRxJava
+    implementation Deps.rxAndroid
+    implementation Deps.rxKotlin
+    implementation Deps.supportLib
 
-    kapt dependencies.archCompiler
-    kapt dependencies.daggerCompiler
-    kapt dependencies.daggerProcessor
+    kapt Deps.archCompiler
+    kapt Deps.daggerCompiler
+    kapt Deps.daggerProcessor
 
-    testImplementation testDependencies.junit
+    testImplementation Deps.junit
 
-    androidTestImplementation testDependencies.espresso
-    androidTestImplementation testDependencies.espressoRunner
+    androidTestImplementation Deps.espresso
+    androidTestImplementation Deps.espressoRunner
 }
