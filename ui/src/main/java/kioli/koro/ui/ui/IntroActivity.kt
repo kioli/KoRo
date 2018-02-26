@@ -39,6 +39,7 @@ class IntroActivity : AppCompatActivity() {
                 Observer<Resource<QuoteModelPresentation>> {
                     if (it != null) handleDataState(it.status, it.data, it.message)
                 })
+        handleDataState(ResourceState.SUCCESS, null, null)
     }
 
     private fun handleDataState(state: ResourceState, data: QuoteModelPresentation?, message: String?) {

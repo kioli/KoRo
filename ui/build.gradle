@@ -29,10 +29,6 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 configurations.all {
     resolutionStrategy {
         force "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
@@ -47,7 +43,9 @@ dependencies {
 
     implementation Deps.archExtensions
     implementation Deps.dagger
-    implementation Deps.daggerSupport
+    implementation (Deps.daggerSupport) {
+        exclude group:'com.android.support:', module:'appcompat-v7'
+    }
     implementation Deps.kotlin
     implementation Deps.roomRxJava
     implementation Deps.rxAndroid

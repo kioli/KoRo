@@ -11,7 +11,7 @@ object Versions {
     //Libraries
     const val appCompat = "27.0.2"
     const val androidArchitecture = "1.1.0"
-    const val dagger = "2.11"
+    const val dagger = "2.14.1"
     const val gson = "2.8.2"
     const val javaxInject = "1"
     const val kotlin = "1.2.21"

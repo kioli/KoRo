@@ -30,9 +30,7 @@ open class IntroViewModel @Inject internal constructor(
         super.onCleared()
     }
 
-    fun getLiveData(): LiveData<Resource<QuoteModelPresentation>> {
-        return quoteLiveData
-    }
+    fun getLiveData(): LiveData<Resource<QuoteModelPresentation>> = quoteLiveData
 
     fun loadQuote() {
         quoteLiveData.postValue(Resource(ResourceState.LOADING, null, null))
