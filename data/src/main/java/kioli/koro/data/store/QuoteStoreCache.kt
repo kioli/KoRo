@@ -1,24 +1,23 @@
 package kioli.koro.data.store
 
-import io.reactivex.Completable
 import kioli.koro.data.model.QuoteModelData
 import kioli.koro.data.repository.QuoteCache
-import kioli.koro.data.repository.QuoteDataStore
+import kioli.koro.data.repository.QuoteStore
 import javax.inject.Inject
 
 /**
- * Implementation of the [QuoteDataStore] interface to provide a means of communicating
+ * Implementation of the [QuoteStore] interface to provide a means of communicating
  * with the local data source
  */
-open class QuoteDataStoreCache @Inject constructor(private val quoteCache: QuoteCache) : QuoteDataStore {
+open class QuoteStoreCache @Inject constructor(private val quoteCache: QuoteCache) : QuoteStore {
 
     /**
-     * Clear all Users from the cache
+     * Clear all Quotes from the cache
      */
     override fun clearQuotes() = quoteCache.clearQuotes()
 
     /**
-     * Save a given [List] of [QuoteModelData] instances to the cache
+     * Save a given [QuoteModelData] instance to the cache
      */
     override fun saveQuote(quote: QuoteModelData) = quoteCache.saveQuote(quote)
 

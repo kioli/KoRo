@@ -1,4 +1,4 @@
-package kioli.koro.ui.ui
+package kioli.koro.ui.activity
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders

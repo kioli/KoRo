@@ -5,7 +5,7 @@ import kioli.koro.remote.model.QuoteModelRemote
 import retrofit2.http.GET
 
 /**
- * Defines the abstract methods used for interacting with the User API
+ * Defines the abstract methods used for interacting with the Quote API
  */
 interface QuoteService {
 

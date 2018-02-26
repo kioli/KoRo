@@ -11,12 +11,10 @@ import kioli.koro.cache.mapper.QuoteCacheMapper
 import kioli.koro.data.executor.JobExecutor
 import kioli.koro.data.mapper.QuoteDataMapper
 import kioli.koro.data.repository.QuoteCache
-import kioli.koro.data.repository.QuoteDataRepository
 import kioli.koro.data.repository.QuoteRemote
-import kioli.koro.data.store.QuoteDataStoreFactory
+import kioli.koro.data.store.QuoteStoreFactory
 import kioli.koro.domain.executor.PostExecutionThread
 import kioli.koro.domain.executor.ThreadExecutor
-import kioli.koro.domain.repository.QuoteRepository
 import kioli.koro.remote.QuoteRemoteImpl
 import kioli.koro.remote.QuoteService
 import kioli.koro.remote.QuoteServiceFactory
@@ -52,9 +50,9 @@ class ApplicationModule {
 
     @Provides
     @PerApplication
-    internal fun provideQuoteRepository(factory: QuoteDataStoreFactory,
-                                        mapper: QuoteDataMapper): QuoteRepository {
-        return QuoteDataRepository(factory, mapper)
+    internal fun provideQuoteRepository(factory: QuoteStoreFactory,
+                                        mapper: QuoteDataMapper): kioli.koro.domain.repository.QuoteRepository {
+        return kioli.koro.data.repository.QuoteRepository(factory, mapper)
     }
 
     @Provides

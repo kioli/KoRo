@@ -25,7 +25,7 @@ abstract class CompletableUseCase<in Params> protected constructor(
     /**
      * Executes the current use case.
      */
-    fun execute(observer: DisposableCompletableObserver, params: Params) {
+    open fun execute(observer: DisposableCompletableObserver, params: Params) {
         val observable = buildUseCaseObservable(params)
                 .subscribeOn(Schedulers.from(threadExecutor))
                 .observeOn(postExecutionThread.scheduler)

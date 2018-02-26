@@ -7,7 +7,7 @@ import kioli.koro.remote.mapper.QuoteRemoteMapper
 import javax.inject.Inject
 
 /**
- * Remote implementation for retrieving User instances. This class implements the
+ * Remote implementation for retrieving Quote instances. This class implements the
  * [QuoteRemote] from the Data layer as it is that layers responsibility for defining the
  * operations in which data store implementation layers can carry out.
  */
@@ -16,8 +16,11 @@ class QuoteRemoteImpl @Inject constructor(private val service: QuoteService,
         QuoteRemote {
 
     /**
-     * Retrieve a list of [QuoteModelData] instances from the [QuoteService].
+     * Retrieve an instance of [QuoteModelData] from the [QuoteService].
      */
-    override fun getQuotes(): Flowable<QuoteModelData> = service.loadQuote().map { mapper.mapFromRemote(it) }
-
+    override fun getQuotes(): Flowable<QuoteModelData> {
+        return Flowable.defer {
+            service.loadQuote().map { mapper.mapFromRemote(it) }
+        }
+    }
 }

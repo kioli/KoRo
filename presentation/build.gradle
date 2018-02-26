@@ -38,5 +38,7 @@ dependencies {
 
     kapt Deps.archCompiler
 
+    testImplementation Deps.architectureTesting
     testImplementation Deps.junit
+    testImplementation Deps.mockito
 }

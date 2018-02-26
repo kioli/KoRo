@@ -9,7 +9,7 @@ import kioli.koro.domain.repository.QuoteRepository
 import javax.inject.Inject
 
 /**
- * Use case used for saving a [QuoteModelDomain]
+ * Use case used for clearing all stored [QuoteModelDomain]
  */
 open class ClearQuoteUseCase @Inject constructor(val repository: QuoteRepository,
                                                  threadExecutor: ThreadExecutor,

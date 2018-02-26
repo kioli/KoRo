@@ -10,7 +10,7 @@ import kioli.koro.data.model.QuoteModelData
  * This is to be implemented by external data source layers, setting the requirements for the
  * operations that need to be implemented
  */
-interface QuoteDataStore {
+interface QuoteStore {
 
     fun clearQuotes(): Completable
 

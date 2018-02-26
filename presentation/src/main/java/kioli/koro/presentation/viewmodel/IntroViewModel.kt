@@ -59,8 +59,7 @@ open class IntroViewModel @Inject internal constructor(
 
     inner class SaveQuoteSubscriber : DisposableCompletableObserver() {
 
-        override fun onComplete() {
-        }
+        override fun onComplete() {}
 
         override fun onError(exception: Throwable) {
             quoteLiveData.postValue(Resource(ResourceState.ERROR, null, exception.localizedMessage))
