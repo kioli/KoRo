@@ -41,6 +41,8 @@ dependencies {
     implementation project(':presentation')
     implementation project(':remote')
 
+    implementation Deps.appCenterAnalytics
+    implementation Deps.appCenterCrashes
     implementation Deps.archExtensions
     implementation Deps.dagger
     implementation (Deps.daggerSupport) {
@@ -51,9 +53,6 @@ dependencies {
     implementation Deps.rxAndroid
     implementation Deps.rxKotlin
     implementation Deps.supportLib
-
-    implementation Deps.appCenterAnalytics
-    implementation Deps.appCenterCrashes
 
     kapt Deps.archCompiler
     kapt Deps.daggerCompiler

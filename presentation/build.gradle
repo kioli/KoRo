@@ -30,6 +30,7 @@ android {
 dependencies {
     api project(':domain')
 
+    implementation Deps.appCenterAnalytics
     implementation Deps.archRuntime
     implementation Deps.archExtensions
     implementation Deps.javaxInject
