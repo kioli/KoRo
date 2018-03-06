@@ -7,12 +7,12 @@ import kioli.koro.presentation.viewmodel.LoginViewModel
 import kioli.koro.presentation.viewmodel.ViewModelFactory
 
 /**
- * Module used to provide dependencies to the [IntroActivity]
+ * Module used to provide dependencies to the [LoginActivity]
  */
 @Module
-open class IntroActivityModule {
+open class LoginActivityModule {
 
     @Provides
-    fun provideIntroViewModelFactory(introViewModel: IntroViewModel, loginViewModel: LoginViewModel) =
+    fun provideLoginViewModelFactory(introViewModel: IntroViewModel, loginViewModel: LoginViewModel) =
             ViewModelFactory(introViewModel, loginViewModel)
 }

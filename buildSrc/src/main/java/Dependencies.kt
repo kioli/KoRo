@@ -9,7 +9,7 @@ object Versions {
     const val gradleDexCountPlugin = "0.8.2"
 
     //Libraries
-    const val appCompat = "27.0.2"
+    const val appCompat = "27.1.0"
     const val androidArchitecture = "1.1.0"
     const val dagger = "2.14.1"
     const val gson = "2.8.2"
@@ -53,6 +53,7 @@ object Deps {
     const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxKotlin}"
     const val supportLib = "com.android.support:appcompat-v7:${Versions.appCompat}"
+    const val supportDesignLib = "com.android.support:design:${Versions.appCompat}"
 
     const val espresso = "com.android.support.test.espresso:espresso-core:${Versions.espresso}"
     const val espressoRunner = "com.android.support.test:runner:${Versions.espressoRunner}"

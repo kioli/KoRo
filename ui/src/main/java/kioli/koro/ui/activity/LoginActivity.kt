@@ -2,6 +2,7 @@ package kioli.koro.ui.activity
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -9,40 +10,33 @@ import android.widget.Toast
 import dagger.android.AndroidInjection
 import kioli.koro.presentation.data.Resource
 import kioli.koro.presentation.data.ResourceState
-import kioli.koro.presentation.model.QuoteModelPresentation
-import kioli.koro.presentation.viewmodel.IntroViewModel
+import kioli.koro.presentation.model.UserModelPresentation
+import kioli.koro.presentation.viewmodel.LoginViewModel
 import kioli.koro.presentation.viewmodel.ViewModelFactory
 import kioli.koro.ui.R
-import kotlinx.android.synthetic.main.activity_intro.*
+import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
-class IntroActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var introViewModel: IntroViewModel
+    private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intro)
+        setContentView(R.layout.activity_login)
         AndroidInjection.inject(this)
-        introViewModel = ViewModelProviders.of(this, viewModelFactory).get(IntroViewModel::class.java)
+        loginViewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
 
-        btn_load_quote.setOnClickListener { introViewModel.loadQuote() }
-        btn_save_quote.setOnClickListener { introViewModel.saveQuote(quote_result.text.toString()) }
-        btn_clear_quote.setOnClickListener { introViewModel.clearQuotes() }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        introViewModel.getLiveData().observe(this,
-                Observer<Resource<QuoteModelPresentation>> {
+        btn_login.setOnClickListener { loginViewModel.goToNextScreen() }
+        loginViewModel.getLiveData().observe(this,
+                Observer<Resource<UserModelPresentation>> {
                     if (it != null) handleDataState(it.status, it.data, it.message)
                 })
-        handleDataState(ResourceState.SUCCESS, null, null)
     }
 
-    private fun handleDataState(state: ResourceState, data: QuoteModelPresentation?, message: String?) {
+    private fun handleDataState(state: ResourceState, data: UserModelPresentation?, message: String?) {
         when (state) {
             ResourceState.LOADING -> setupScreenForLoadingState()
             ResourceState.SUCCESS -> setupScreenForSuccess(data)
@@ -54,10 +48,11 @@ class IntroActivity : AppCompatActivity() {
         loading.visibility = View.VISIBLE
     }
 
-    private fun setupScreenForSuccess(data: QuoteModelPresentation?) {
-        loading.visibility = View.GONE
-        quote_result.text = data?.text ?: ""
-        btn_save_quote.isEnabled = data?.text?.isNotBlank() ?: false
+    private fun setupScreenForSuccess(data: UserModelPresentation?) {
+        data?.let {
+            loading.visibility = View.GONE
+            startActivity(Intent(this, IntroActivity::class.java))
+        }
     }
 
     private fun setupScreenForError(message: String?) {

@@ -53,6 +53,7 @@ dependencies {
     implementation Deps.rxAndroid
     implementation Deps.rxKotlin
     implementation Deps.supportLib
+    implementation Deps.supportDesignLib
 
     kapt Deps.archCompiler
     kapt Deps.daggerCompiler

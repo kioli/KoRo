@@ -3,4 +3,7 @@
     <string name="button_load_quote">Load quote</string>
     <string name="button_save_quote">Save quote</string>
     <string name="button_clear_quote">Clear</string>
+    <string name="button_login">Login</string>
+    <string name="login_username_hint">Insert username</string>
+    <string name="login_password_hint">Insert password</string>
 </resources>
