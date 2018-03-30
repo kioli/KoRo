@@ -5,7 +5,7 @@ object Versions {
     const val androidTargetSdk = 26
     const val androidVersionCode = 1
     const val androidVersionName = "1.0"
-    const val gradleBuildTool = "3.0.1"
+    const val gradleBuildTool = "3.1.0"
     const val gradleDexCountPlugin = "0.8.2"
 
     //Libraries
@@ -14,7 +14,7 @@ object Versions {
     const val dagger = "2.14.1"
     const val gson = "2.8.2"
     const val javaxInject = "1"
-    const val kotlin = "1.2.21"
+    const val kotlin = "1.2.30"
     const val okHttp = "3.9.1"
     const val retrofit = "2.3.0"
     const val room = "1.0.0"
