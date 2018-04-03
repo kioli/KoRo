@@ -5,9 +5,9 @@ import android.arch.persistence.room.Room
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import kioli.koro.cache.QuoteCacheImpl
-import kioli.koro.cache.db.Db
-import kioli.koro.cache.mapper.QuoteCacheMapper
+import kioli.koro.cache.room.QuoteCacheImpl
+import kioli.koro.cache.room.db.Db
+import kioli.koro.cache.room.mapper.QuoteCacheMapper
 import kioli.koro.data.executor.JobExecutor
 import kioli.koro.data.mapper.QuoteDataMapper
 import kioli.koro.data.repository.QuoteCache

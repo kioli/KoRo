@@ -1,6 +1,6 @@
-package kioli.koro.cache.mapper
+package kioli.koro.cache.room.mapper
 
-import kioli.koro.cache.model.QuoteModelCache
+import kioli.koro.cache.room.model.QuoteModelCache
 import kioli.koro.data.model.QuoteModelData
 import javax.inject.Inject
 

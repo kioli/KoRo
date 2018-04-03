@@ -1,4 +1,4 @@
-package kioli.koro.cache.mapper
+package kioli.koro.cache.room.mapper
 
 /**
  * Interface for model mappers.

@@ -1,12 +1,12 @@
-package kioli.koro.cache
+package kioli.koro.cache.room
 
 import android.support.annotation.VisibleForTesting
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
-import kioli.koro.cache.db.Db
-import kioli.koro.cache.mapper.QuoteCacheMapper
-import kioli.koro.cache.model.QuoteModelCache
+import kioli.koro.cache.room.db.Db
+import kioli.koro.cache.room.mapper.QuoteCacheMapper
+import kioli.koro.cache.room.model.QuoteModelCache
 import kioli.koro.data.model.QuoteModelData
 import kioli.koro.data.repository.QuoteCache
 import javax.inject.Inject
