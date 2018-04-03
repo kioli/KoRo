@@ -2,7 +2,6 @@ package kioli.koro.ui.di.module
 
 import dagger.Module
 import dagger.Provides
-import kioli.koro.presentation.viewmodel.IntroViewModel
 import kioli.koro.presentation.viewmodel.LoginViewModel
 import kioli.koro.presentation.viewmodel.ViewModelFactory
 
@@ -13,6 +12,6 @@ import kioli.koro.presentation.viewmodel.ViewModelFactory
 open class LoginActivityModule {
 
     @Provides
-    fun provideLoginViewModelFactory(introViewModel: IntroViewModel, loginViewModel: LoginViewModel) =
-            ViewModelFactory(introViewModel, loginViewModel)
+    fun provideLoginViewModelFactory(loginViewModel: LoginViewModel) =
+            ViewModelFactory(loginViewModel = loginViewModel)
 }
