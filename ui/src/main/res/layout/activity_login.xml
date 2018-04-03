@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="kioli.koro.ui.activity.IntroActivity">
 
     <LinearLayout
@@ -22,7 +22,7 @@
                 android:id="@+id/username_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_username_hint" />
+                android:hint="@string/login_username_hint"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -35,7 +35,7 @@
                 android:id="@+id/password_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_username_hint" />
+                android:hint="@string/login_password_hint"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -43,6 +43,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_login"/>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_register"/>
     </LinearLayout>
 
     <RelativeLayout

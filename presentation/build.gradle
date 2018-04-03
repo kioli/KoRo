@@ -33,6 +33,7 @@ dependencies {
     implementation Deps.appCenterAnalytics
     implementation Deps.archRuntime
     implementation Deps.archExtensions
+    implementation Deps.firebaseAuthentication
     implementation Deps.javaxInject
     implementation Deps.kotlin
     implementation Deps.rxKotlin
