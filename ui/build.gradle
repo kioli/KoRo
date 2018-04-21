@@ -64,4 +64,5 @@ dependencies {
 
     androidTestImplementation Deps.espresso
     androidTestImplementation Deps.espressoRunner
+    androidTestImplementation Deps.appCenterEspresso
 }

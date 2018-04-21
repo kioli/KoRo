@@ -31,6 +31,7 @@ object Versions {
 
     //App Center
     const val appCenterSdk = "1.3.0"
+    const val appCenterEspresso = "1.2"
 }
 
 object Deps {
@@ -69,4 +70,5 @@ object Deps {
 
     const val appCenterAnalytics = "com.microsoft.appcenter:appcenter-analytics:${Versions.appCenterSdk}"
     const val appCenterCrashes = "com.microsoft.appcenter:appcenter-crashes:${Versions.appCenterSdk}"
+    const val appCenterEspresso = "com.microsoft.appcenter:espresso-test-extension:${Versions.appCenterEspresso}"
 }

@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "833417673487",
+    "firebase_url": "https://koro-e64bf.firebaseio.com",
+    "project_id": "koro-e64bf",
+    "storage_bucket": "koro-e64bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833417673487:android:92601147ddb5368a",
+        "android_client_info": {
+          "package_name": "kioli.koro.cache"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833417673487-a4i9a8df1nfkbvp2famt5iben12kepdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-6oNoGM3L4rtxRY6OxQSreXydK4jlqsQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833417673487:android:c74b7ffe9040702d",
+        "android_client_info": {
+          "package_name": "kioli.koro.ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833417673487-a4i9a8df1nfkbvp2famt5iben12kepdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-6oNoGM3L4rtxRY6OxQSreXydK4jlqsQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
