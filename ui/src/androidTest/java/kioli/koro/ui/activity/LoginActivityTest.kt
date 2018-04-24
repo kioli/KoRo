@@ -26,14 +26,9 @@ class LoginActivityTest{
     var reportHelper: ReportHelper = Factory.getReportHelper()
 
     @Test
-    fun uiTestNumberOne() {
+    fun checkInputFields() {
         onView(withId(R.id.username_input_layout)).check(matches(isDisplayed()))
         onView(withId(R.id.password_input_layout)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun uiTestNumberTwo() {
-        onView(withId(R.id.btn_load_quote)).check(matches(isDisplayed()))
     }
 
     @After

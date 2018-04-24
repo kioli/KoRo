@@ -26,7 +26,7 @@ object Versions {
     //Testing
     const val espressoRunner = "1.0.0"
     const val espresso = "3.0.1"
-    const val jUnit = "4.12"
+    const val jUnit = "5.1.1"
     const val mockito = "1.5.0"
 
     //App Center
@@ -62,7 +62,7 @@ object Deps {
 
     const val espresso = "com.android.support.test.espresso:espresso-core:${Versions.espresso}"
     const val espressoRunner = "com.android.support.test:runner:${Versions.espressoRunner}"
-    const val junit = "junit:junit:${Versions.jUnit}"
+    const val junit = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
     const val mockito = "com.nhaarman:mockito-kotlin:${Versions.mockito}"
     const val architectureTesting = "android.arch.core:core-testing:${Versions.androidArchitecture}"
 
