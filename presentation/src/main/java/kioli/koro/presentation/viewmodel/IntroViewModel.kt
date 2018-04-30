@@ -3,6 +3,7 @@ package kioli.koro.presentation.viewmodel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.microsoft.appcenter.analytics.Analytics
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.subscribers.DisposableSubscriber
@@ -19,6 +20,7 @@ import kioli.koro.presentation.model.QuoteModelPresentation
 import javax.inject.Inject
 
 open class IntroViewModel @Inject internal constructor(
+        private val auth: FirebaseAuth,
         private val loadQuoteUseCase: LoadQuoteUseCase,
         private val saveQuoteUseCase: SaveQuoteUseCase,
         private val clearQuoteUseCase: ClearQuoteUseCase,
@@ -34,6 +36,10 @@ open class IntroViewModel @Inject internal constructor(
     }
 
     fun getLiveData(): LiveData<Resource<QuoteModelPresentation>> = quoteLiveData
+
+    fun logout() {
+        auth.signOut()
+    }
 
     fun loadQuote() {
         quoteLiveData.postValue(Resource(ResourceState.LOADING, null, null))

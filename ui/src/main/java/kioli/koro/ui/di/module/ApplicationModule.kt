@@ -3,6 +3,7 @@ package kioli.koro.ui.di.module
 import android.app.Application
 import android.arch.persistence.room.Room
 import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import kioli.koro.cache.room.QuoteCacheImpl
@@ -11,10 +12,12 @@ import kioli.koro.cache.room.mapper.QuoteCacheMapper
 import kioli.koro.data.executor.JobExecutor
 import kioli.koro.data.mapper.QuoteDataMapper
 import kioli.koro.data.repository.QuoteCache
+import kioli.koro.data.repository.QuoteDataRepository
 import kioli.koro.data.repository.QuoteRemote
 import kioli.koro.data.store.QuoteStoreFactory
 import kioli.koro.domain.executor.PostExecutionThread
 import kioli.koro.domain.executor.ThreadExecutor
+import kioli.koro.domain.repository.QuoteRepository
 import kioli.koro.remote.QuoteRemoteImpl
 import kioli.koro.remote.QuoteService
 import kioli.koro.remote.QuoteServiceFactory
@@ -51,8 +54,8 @@ class ApplicationModule {
     @Provides
     @PerApplication
     internal fun provideQuoteRepository(factory: QuoteStoreFactory,
-                                        mapper: QuoteDataMapper): kioli.koro.domain.repository.QuoteRepository {
-        return kioli.koro.data.repository.QuoteRepository(factory, mapper)
+                                        mapper: QuoteDataMapper): QuoteRepository {
+        return QuoteDataRepository(factory, mapper)
     }
 
     @Provides
@@ -78,5 +81,11 @@ class ApplicationModule {
     @PerApplication
     internal fun providePostExecutionThread(uiThread: UiThread): PostExecutionThread {
         return uiThread
+    }
+
+    @Provides
+    @PerApplication
+    internal fun provideFirebaseAuthenticator(): FirebaseAuth {
+        return FirebaseAuth.getInstance()
     }
 }

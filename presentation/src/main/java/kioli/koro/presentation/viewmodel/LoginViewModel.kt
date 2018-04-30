@@ -15,31 +15,42 @@ import kioli.koro.presentation.model.UserModelPresentation
 import java.util.regex.Pattern
 import javax.inject.Inject
 
-open class LoginViewModel @Inject internal constructor(
-        private val auth: FirebaseAuth) : ViewModel() {
+open class LoginViewModel @Inject internal constructor(private val auth: FirebaseAuth)
+    : ViewModel() {
 
     private val wrongEmail = "Insert valid email"
     private val wrongPassword = "Password must be at least 8 characters long and contain at least one number, one upper case and one lower case character"
     private val missingInput = "Provide both email and password"
     private val failLogin = "Login failed"
-    private val failRegistration = "Registration failed"
+    private val failRegistration = "Registration failed, user already present"
 
-    private val passwordPattern = "^(?=.[a-z])(?=.[A-Z])(?=.*\\d)[a-zA-Z\\d\\W]{8,63}$"
+    private val passwordPattern = "^((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[#\$@!%&*?^.]).{8,63})$"
     private val userLiveData: MutableLiveData<Resource<UserModelPresentation>> = MutableLiveData()
 
     fun getLiveData(): LiveData<Resource<UserModelPresentation>> = userLiveData
 
-    fun loginUser(email: String?, password: String?) {
-        userLiveData.postValue(Resource(ResourceState.LOADING, null, null))
-        if (isInputValid(email, password)) {
-            auth.signInWithEmailAndPassword(email!!, password!!).addOnCompleteListener(LoginSubscriber())
+    fun automaticLogin() {
+        auth.currentUser?.let {
+            val user = UserModelPresentation(it.email!!, "")
+            userLiveData.postValue(Resource(ResourceState.SUCCESS, user, null))
         }
     }
 
-    fun registerUser(email: String?, password: String?) {
+    fun loginUser(email: String, password: String) {
+        val cleanEmail = email.trim()
+        val cleanPassword = password.trim()
         userLiveData.postValue(Resource(ResourceState.LOADING, null, null))
-        if (isInputValid(email, password)) {
-            auth.createUserWithEmailAndPassword(email!!, password!!).addOnCompleteListener(RegistrationSubscriber())
+        if (isInputValid(cleanEmail, cleanPassword)) {
+            auth.signInWithEmailAndPassword(cleanEmail, cleanPassword).addOnCompleteListener(LoginSubscriber())
+        }
+    }
+
+    fun registerUser(email: String, password: String) {
+        val cleanEmail = email.trim()
+        val cleanPassword = password.trim()
+        userLiveData.postValue(Resource(ResourceState.LOADING, null, null))
+        if (isInputValid(cleanEmail, cleanPassword)) {
+            auth.createUserWithEmailAndPassword(cleanEmail, cleanPassword).addOnCompleteListener(RegistrationSubscriber())
         }
     }
 
@@ -64,9 +75,9 @@ open class LoginViewModel @Inject internal constructor(
             if (task.isSuccessful) {
                 val user = UserModelPresentation(auth.currentUser?.email!!, "")
                 userLiveData.postValue(Resource(ResourceState.SUCCESS, user, null))
-            } else {
-                userLiveData.postValue(Resource(ResourceState.ERROR, null, failRegistration))
+                return
             }
+            userLiveData.postValue(Resource(ResourceState.ERROR, null, failRegistration))
         }
     }
 
@@ -75,9 +86,9 @@ open class LoginViewModel @Inject internal constructor(
             if (task.isSuccessful) {
                 val user = UserModelPresentation(auth.currentUser?.email!!, "")
                 userLiveData.postValue(Resource(ResourceState.SUCCESS, user, null))
-            } else {
-                userLiveData.postValue(Resource(ResourceState.ERROR, null, failLogin))
+                return
             }
+            userLiveData.postValue(Resource(ResourceState.ERROR, null, failLogin))
         }
     }
 }

@@ -4,6 +4,8 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import dagger.android.AndroidInjection
@@ -37,20 +39,34 @@ class IntroActivity : AppCompatActivity() {
         super.onStart()
         introViewModel.getLiveData().observe(this,
                 Observer<Resource<QuoteModelPresentation>> {
-                    if (it != null) handleDataState(it.status, it.data, it.message)
+                    if (it != null) handleState(it.status, it.data, it.message)
                 })
-        handleDataState(ResourceState.SUCCESS, null, null)
+        handleState(ResourceState.SUCCESS, null, null)
     }
 
-    private fun handleDataState(state: ResourceState, data: QuoteModelPresentation?, message: String?) {
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_intro, menu);
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?)= when (item?.itemId) {
+        R.id.menu_logout -> {
+            introViewModel.logout()
+            finish()
+            true
+        }
+        else -> { super.onOptionsItemSelected(item) }
+    }
+
+    private fun handleState(state: ResourceState, data: QuoteModelPresentation?, message: String?) {
         when (state) {
-            ResourceState.LOADING -> setupScreenForLoadingState()
+            ResourceState.LOADING -> setupScreenForLoading()
             ResourceState.SUCCESS -> setupScreenForSuccess(data)
             ResourceState.ERROR -> setupScreenForError(message)
         }
     }
 
-    private fun setupScreenForLoadingState() {
+    private fun setupScreenForLoading() {
         loading.visibility = View.VISIBLE
     }
 

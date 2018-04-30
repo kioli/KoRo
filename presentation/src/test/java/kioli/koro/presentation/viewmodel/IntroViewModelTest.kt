@@ -1,6 +1,7 @@
 package kioli.koro.presentation.viewmodel
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
+import com.google.firebase.auth.FirebaseAuth
 import com.nhaarman.mockito_kotlin.*
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.subscribers.DisposableSubscriber
@@ -24,11 +25,12 @@ internal class IntroViewModelTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    private val authFirebase: FirebaseAuth = mock()
     private val loadQuote: LoadQuoteUseCase = mock()
     private val saveQuote: SaveQuoteUseCase = mock()
     private val clearQuote: ClearQuoteUseCase = mock()
     private val mapper: QuotePresentationMapper = mock()
-    private val viewModel: IntroViewModel = IntroViewModel(loadQuote, saveQuote, clearQuote, mapper)
+    private val viewModel: IntroViewModel = IntroViewModel(authFirebase, loadQuote, saveQuote, clearQuote, mapper)
 
     @Captor
     private val captorDisposableSubscriber: KArgumentCaptor<DisposableSubscriber<QuoteModelDomain>> = argumentCaptor()
@@ -36,7 +38,7 @@ internal class IntroViewModelTest {
 
     @BeforeEach
     fun init() {
-        reset(loadQuote, saveQuote, clearQuote, mapper)
+        reset(authFirebase, loadQuote, saveQuote, clearQuote, mapper)
     }
 
     @Nested

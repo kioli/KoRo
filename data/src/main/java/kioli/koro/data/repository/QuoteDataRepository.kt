@@ -12,8 +12,8 @@ import javax.inject.Inject
  * Provides an implementation of the [QuoteRepository] interface for communicating to and from
  * data sources
  */
-class QuoteRepository @Inject constructor(private val factory: QuoteStoreFactory,
-                                          private val mapper: QuoteDataMapper) :
+class QuoteDataRepository @Inject constructor(private val factory: QuoteStoreFactory,
+                                              private val mapper: QuoteDataMapper) :
         QuoteRepository {
 
     override fun clearQuotes(): Completable =

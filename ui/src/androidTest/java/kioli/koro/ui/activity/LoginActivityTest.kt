@@ -27,7 +27,7 @@ class LoginActivityTest{
 
     @Test
     fun checkInputFields() {
-        onView(withId(R.id.username_input_layout)).check(matches(isDisplayed()))
+        onView(withId(R.id.email_input_layout)).check(matches(isDisplayed()))
         onView(withId(R.id.password_input_layout)).check(matches(isDisplayed()))
     }
 
