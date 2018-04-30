@@ -2,7 +2,7 @@ package kioli.koro.ui.di.module
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import kioli.koro.ui.activity.IntroActivity
+import kioli.koro.ui.activity.QuoteActivity
 import kioli.koro.ui.activity.LoginActivity
 import kioli.koro.ui.di.scope.PerActivity
 
@@ -10,8 +10,8 @@ import kioli.koro.ui.di.scope.PerActivity
 abstract class ActivityBindingModule {
 
     @PerActivity
-    @ContributesAndroidInjector(modules = [(IntroActivityModule::class)])
-    abstract fun bindIntroActivity(): IntroActivity
+    @ContributesAndroidInjector(modules = [(QuoteActivityModule::class)])
+    abstract fun bindQuoteActivity(): QuoteActivity
 
     @PerActivity
     @ContributesAndroidInjector(modules = [(LoginActivityModule::class)])

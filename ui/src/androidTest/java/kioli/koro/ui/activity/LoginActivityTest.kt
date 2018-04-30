@@ -19,10 +19,10 @@ import org.junit.runner.RunWith
 @LargeTest
 class LoginActivityTest{
 
-    @get:Rule
+    @Rule @JvmField
     var activityRule: ActivityTestRule<LoginActivity> = ActivityTestRule(LoginActivity::class.java)
 
-    @get:Rule
+    @Rule @JvmField
     var reportHelper: ReportHelper = Factory.getReportHelper()
 
     @Test

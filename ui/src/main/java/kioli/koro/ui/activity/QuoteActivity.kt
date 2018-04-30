@@ -12,32 +12,32 @@ import dagger.android.AndroidInjection
 import kioli.koro.presentation.data.Resource
 import kioli.koro.presentation.data.ResourceState
 import kioli.koro.presentation.model.QuoteModelPresentation
-import kioli.koro.presentation.viewmodel.IntroViewModel
+import kioli.koro.presentation.viewmodel.QuoteViewModel
 import kioli.koro.presentation.viewmodel.ViewModelFactory
 import kioli.koro.ui.R
-import kotlinx.android.synthetic.main.activity_intro.*
+import kotlinx.android.synthetic.main.activity_quote.*
 import javax.inject.Inject
 
-class IntroActivity : AppCompatActivity() {
+class QuoteActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var introViewModel: IntroViewModel
+    private lateinit var quoteViewModel: QuoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intro)
+        setContentView(R.layout.activity_quote)
         AndroidInjection.inject(this)
-        introViewModel = ViewModelProviders.of(this, viewModelFactory).get(IntroViewModel::class.java)
+        quoteViewModel = ViewModelProviders.of(this, viewModelFactory).get(QuoteViewModel::class.java)
 
-        btn_load_quote.setOnClickListener { introViewModel.loadQuote() }
-        btn_save_quote.setOnClickListener { introViewModel.saveQuote(quote_result.text.toString()) }
-        btn_clear_quote.setOnClickListener { introViewModel.clearQuotes() }
+        btn_load_quote.setOnClickListener { quoteViewModel.loadQuote() }
+        btn_save_quote.setOnClickListener { quoteViewModel.saveQuote(quote_result.text.toString()) }
+        btn_clear_quote.setOnClickListener { quoteViewModel.clearQuotes() }
     }
 
     override fun onStart() {
         super.onStart()
-        introViewModel.getLiveData().observe(this,
+        quoteViewModel.getLiveData().observe(this,
                 Observer<Resource<QuoteModelPresentation>> {
                     if (it != null) handleState(it.status, it.data, it.message)
                 })
@@ -45,13 +45,13 @@ class IntroActivity : AppCompatActivity() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_intro, menu);
+        menuInflater.inflate(R.menu.menu_quote, menu);
         return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?)= when (item?.itemId) {
         R.id.menu_logout -> {
-            introViewModel.logout()
+            quoteViewModel.logout()
             finish()
             true
         }

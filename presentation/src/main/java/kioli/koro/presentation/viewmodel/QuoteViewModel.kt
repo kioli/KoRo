@@ -19,7 +19,7 @@ import kioli.koro.presentation.mapper.QuotePresentationMapper
 import kioli.koro.presentation.model.QuoteModelPresentation
 import javax.inject.Inject
 
-open class IntroViewModel @Inject internal constructor(
+open class QuoteViewModel @Inject internal constructor(
         private val auth: FirebaseAuth,
         private val loadQuoteUseCase: LoadQuoteUseCase,
         private val saveQuoteUseCase: SaveQuoteUseCase,

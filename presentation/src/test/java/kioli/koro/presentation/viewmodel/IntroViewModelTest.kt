@@ -21,7 +21,7 @@ import org.junit.jupiter.api.TestInstance
 import org.mockito.Captor
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class IntroViewModelTest {
+internal class QuoteViewModelTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -30,7 +30,7 @@ internal class IntroViewModelTest {
     private val saveQuote: SaveQuoteUseCase = mock()
     private val clearQuote: ClearQuoteUseCase = mock()
     private val mapper: QuotePresentationMapper = mock()
-    private val viewModel: IntroViewModel = IntroViewModel(authFirebase, loadQuote, saveQuote, clearQuote, mapper)
+    private val viewModel: QuoteViewModel = QuoteViewModel(authFirebase, loadQuote, saveQuote, clearQuote, mapper)
 
     @Captor
     private val captorDisposableSubscriber: KArgumentCaptor<DisposableSubscriber<QuoteModelDomain>> = argumentCaptor()

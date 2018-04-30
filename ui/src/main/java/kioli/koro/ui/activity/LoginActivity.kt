@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setupScreenForSuccess(data: UserModelPresentation?) {
         data?.let {
             loading.visibility = View.GONE
-            startActivity(Intent(this, IntroActivity::class.java))
+            startActivity(Intent(this, QuoteActivity::class.java))
         }
     }
 
