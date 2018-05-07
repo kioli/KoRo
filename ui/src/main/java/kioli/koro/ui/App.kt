@@ -8,22 +8,24 @@ import com.microsoft.appcenter.crashes.Crashes
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import kioli.koro.ui.di.component.DaggerApplicationComponent
+import kioli.koro.ui.di.component.LMComponent
 import javax.inject.Inject
 
-
-class App : Application(), HasActivityInjector {
+open class App : Application(), HasActivityInjector {
 
     @Inject
     lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
+    private val component: LMComponent = createComponent()
+
+    open fun createComponent(): LMComponent = DaggerApplicationComponent
+            .builder()
+            .application(this)
+            .build()
+
     override fun onCreate() {
         super.onCreate()
-        DaggerApplicationComponent
-                .builder()
-                .application(this)
-                .build()
-                .inject(this)
-
+        component.inject(this)
         AppCenter.start(this,
                 "fb55b256-4b5f-42fd-80ae-ed0aaf91017f",
                 Analytics::class.java,

@@ -22,7 +22,7 @@ import org.mockito.Captor
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class QuoteViewModelTest {
-    @get:Rule
+    @Rule @JvmField
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val authFirebase: FirebaseAuth = mock()

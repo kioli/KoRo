@@ -60,9 +60,11 @@ dependencies {
     kapt Deps.daggerCompiler
     kapt Deps.daggerProcessor
 
-    testImplementation Deps.junit
+    kaptAndroidTest Deps.daggerCompiler
+    kaptAndroidTest Deps.daggerProcessor
 
+    androidTestImplementation Deps.appCenterEspresso
     androidTestImplementation Deps.espresso
     androidTestImplementation Deps.espressoRunner
-    androidTestImplementation Deps.appCenterEspresso
+    androidTestImplementation Deps.mockito
 }

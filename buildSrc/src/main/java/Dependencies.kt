@@ -66,7 +66,7 @@ object Deps {
     const val mockito = "com.nhaarman:mockito-kotlin:${Versions.mockito}"
     const val architectureTesting = "android.arch.core:core-testing:${Versions.androidArchitecture}"
 
-    const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    const val testInstrumentationRunner = "kioli.koro.ui.activity.MockTestRunner"
 
     const val appCenterAnalytics = "com.microsoft.appcenter:appcenter-analytics:${Versions.appCenterSdk}"
     const val appCenterCrashes = "com.microsoft.appcenter:appcenter-crashes:${Versions.appCenterSdk}"

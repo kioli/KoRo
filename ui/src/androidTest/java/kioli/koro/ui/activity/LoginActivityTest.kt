@@ -9,11 +9,13 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.microsoft.appcenter.espresso.Factory
 import com.microsoft.appcenter.espresso.ReportHelper
+import kioli.koro.presentation.viewmodel.ViewModelFactory
 import kioli.koro.ui.R
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import javax.inject.Inject
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -24,6 +26,9 @@ class LoginActivityTest{
 
     @Rule @JvmField
     var reportHelper: ReportHelper = Factory.getReportHelper()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     @Test
     fun checkInputFields() {
