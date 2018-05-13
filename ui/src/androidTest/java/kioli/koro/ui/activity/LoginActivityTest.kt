@@ -9,8 +9,11 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.microsoft.appcenter.espresso.Factory
 import com.microsoft.appcenter.espresso.ReportHelper
+import it.cosenonjaviste.daggermock.DaggerMock
 import kioli.koro.presentation.viewmodel.ViewModelFactory
 import kioli.koro.ui.R
+import kioli.koro.ui.activity.di.component.TestApplicationComponent
+import kioli.koro.ui.activity.di.module.TestLoginActivityModule
 import org.junit.After
 import org.junit.Rule
 import org.junit.Test
@@ -20,6 +23,15 @@ import javax.inject.Inject
 @RunWith(AndroidJUnit4::class)
 @LargeTest
 class LoginActivityTest{
+
+    @Rule @JvmField
+    val daggerRule = DaggerMock.rule<TestApplicationComponent>(TestLoginActivityModule())
+//    {
+//        set {
+//            val app = InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as TestApp
+//            app.component = it
+//        }
+//    }
 
     @Rule @JvmField
     var activityRule: ActivityTestRule<LoginActivity> = ActivityTestRule(LoginActivity::class.java)

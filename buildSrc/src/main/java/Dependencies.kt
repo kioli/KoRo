@@ -1,22 +1,22 @@
 object Versions {
     //Android
-    const val androidCompileSdk = 26
+    const val androidCompileSdk = 27
     const val androidMinSdk = 16
-    const val androidTargetSdk = 26
+    const val androidTargetSdk = 27
     const val androidVersionCode = 1
     const val androidVersionName = "1.0"
-    const val gradleBuildTool = "3.1.0"
+    const val gradleBuildTool = "3.1.2"
     const val gradleDexCountPlugin = "0.8.2"
 
     //Libraries
-    const val appCompat = "27.1.0"
+    const val appCompat = "27.1.1"
     const val androidArchitecture = "1.1.0"
     const val dagger = "2.14.1"
     const val firebase = "12.0.1"
     const val googleService = "3.2.1"
     const val gson = "2.8.2"
     const val javaxInject = "1"
-    const val kotlin = "1.2.30"
+    const val kotlin = "1.2.41"
     const val okHttp = "3.9.1"
     const val retrofit = "2.3.0"
     const val room = "1.0.0"
@@ -27,7 +27,8 @@ object Versions {
     const val espressoRunner = "1.0.0"
     const val espresso = "3.0.1"
     const val jUnit = "5.1.1"
-    const val mockito = "1.5.0"
+    const val mockito = "2.18.3"
+    const val daggerMock = "0.8.4"
 
     //App Center
     const val appCenterSdk = "1.3.0"
@@ -63,7 +64,8 @@ object Deps {
     const val espresso = "com.android.support.test.espresso:espresso-core:${Versions.espresso}"
     const val espressoRunner = "com.android.support.test:runner:${Versions.espressoRunner}"
     const val junit = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
-    const val mockito = "com.nhaarman:mockito-kotlin:${Versions.mockito}"
+    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    const val daggerMock = "com.github.fabioCollini.daggermock:daggermock-kotlin:${Versions.daggerMock}"
     const val architectureTesting = "android.arch.core:core-testing:${Versions.androidArchitecture}"
 
     const val testInstrumentationRunner = "kioli.koro.ui.activity.MockTestRunner"

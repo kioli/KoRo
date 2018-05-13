@@ -3,7 +3,7 @@ package kioli.koro.presentation.viewmodel
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 
-open class ViewModelFactory(
+class ViewModelFactory(
         private val quoteViewModel: QuoteViewModel? = null,
         private val loginViewModel: LoginViewModel? = null) : ViewModelProvider.Factory {
 
