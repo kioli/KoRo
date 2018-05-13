@@ -42,5 +42,5 @@ dependencies {
 
     testImplementation Deps.architectureTesting
     testImplementation Deps.junit
-    testImplementation Deps.mockito
+    testImplementation Deps.mockitoUnitTest
 }

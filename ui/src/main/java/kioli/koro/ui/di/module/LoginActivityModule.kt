@@ -12,6 +12,6 @@ import kioli.koro.presentation.viewmodel.ViewModelFactory
 open class LoginActivityModule {
 
     @Provides
-    fun provideLoginViewModelFactory(loginViewModel: LoginViewModel) =
+    open fun provideLoginViewModelFactory(loginViewModel: LoginViewModel) =
             ViewModelFactory(loginViewModel = loginViewModel)
 }

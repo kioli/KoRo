@@ -47,7 +47,7 @@ object Deps {
     const val firebaseFirestore = "com.google.firebase:firebase-firestore:${Versions.firebase}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val javaxInject = "javax.inject:javax.inject:${Versions.javaxInject}"
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jre7:${Versions.kotlin}"
+    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val okHttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
@@ -64,11 +64,12 @@ object Deps {
     const val espresso = "com.android.support.test.espresso:espresso-core:${Versions.espresso}"
     const val espressoRunner = "com.android.support.test:runner:${Versions.espressoRunner}"
     const val junit = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
-    const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    const val mockitoAndroidTest = "org.mockito:mockito-android:${Versions.mockito}"
+    const val mockitoUnitTest = "org.mockito:mockito-core:${Versions.mockito}"
     const val daggerMock = "com.github.fabioCollini.daggermock:daggermock-kotlin:${Versions.daggerMock}"
     const val architectureTesting = "android.arch.core:core-testing:${Versions.androidArchitecture}"
 
-    const val testInstrumentationRunner = "kioli.koro.ui.activity.MockTestRunner"
+    const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
 
     const val appCenterAnalytics = "com.microsoft.appcenter:appcenter-analytics:${Versions.appCenterSdk}"
     const val appCenterCrashes = "com.microsoft.appcenter:appcenter-crashes:${Versions.appCenterSdk}"

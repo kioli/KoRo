@@ -66,6 +66,6 @@ dependencies {
     androidTestImplementation Deps.appCenterEspresso
     androidTestImplementation Deps.espresso
     androidTestImplementation Deps.espressoRunner
-    androidTestImplementation Deps.mockito
+    androidTestImplementation Deps.mockitoAndroidTest
     androidTestImplementation Deps.daggerMock
 }
