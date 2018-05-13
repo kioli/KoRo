@@ -9,7 +9,7 @@ import kioli.koro.presentation.viewmodel.ViewModelFactory
  * Module used to provide dependencies to the [QuoteActivity]
  */
 @Module
-open class QuoteActivityModule {
+class QuoteActivityModule {
 
     @Provides
     fun provideQuoteViewModelFactory(quoteViewModel: QuoteViewModel) =

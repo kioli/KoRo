@@ -10,12 +10,9 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.microsoft.appcenter.espresso.Factory
 import com.microsoft.appcenter.espresso.ReportHelper
-import it.cosenonjaviste.daggermock.DaggerMock
 import kioli.koro.presentation.viewmodel.LoginViewModel
 import kioli.koro.presentation.viewmodel.ViewModelFactory
 import kioli.koro.ui.R
-import kioli.koro.ui.di.component.ApplicationComponent
-import kioli.koro.ui.di.module.LoginActivityModule
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -26,15 +23,15 @@ import org.mockito.Mockito.*
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
-class LoginActivityTest{
+class LoginActivityTest {
 
-    @Rule @JvmField
-    val daggerRule = DaggerMock.rule<ApplicationComponent>(LoginActivityModule())
+    @get:Rule
+    val rule = espressoDaggerMockRule()
 
-    @Rule @JvmField
+    @get:Rule
     var activityRule: ActivityTestRule<LoginActivity> = ActivityTestRule(LoginActivity::class.java, false, false)
 
-    @Rule @JvmField
+    @get:Rule
     var reportHelper: ReportHelper = Factory.getReportHelper()
 
     private val mockViewModelFactory = mock(ViewModelFactory::class.java)

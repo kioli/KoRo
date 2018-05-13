@@ -9,9 +9,9 @@ import kioli.koro.presentation.viewmodel.ViewModelFactory
  * Module used to provide dependencies to the [LoginActivity]
  */
 @Module
-open class LoginActivityModule {
+class LoginActivityModule {
 
     @Provides
-    open fun provideLoginViewModelFactory(loginViewModel: LoginViewModel) =
+    fun provideLoginViewModelFactory(loginViewModel: LoginViewModel) =
             ViewModelFactory(loginViewModel = loginViewModel)
 }
