@@ -30,7 +30,6 @@ android {
 dependencies {
     implementation project(':data')
 
-    implementation Deps.firebaseFirestore
     implementation Deps.javaxInject
     implementation Deps.kotlin
     implementation Deps.room
@@ -40,5 +39,3 @@ dependencies {
 
     testImplementation Deps.junit
 }
-
-apply plugin: 'com.google.gms.google-services'

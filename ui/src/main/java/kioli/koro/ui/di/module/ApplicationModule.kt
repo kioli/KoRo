@@ -3,7 +3,6 @@ package kioli.koro.ui.di.module
 import android.app.Application
 import android.arch.persistence.room.Room
 import android.content.Context
-import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import kioli.koro.cache.room.QuoteCacheImpl
@@ -81,11 +80,5 @@ class ApplicationModule {
     @PerApplication
     internal fun providePostExecutionThread(uiThread: UiThread): PostExecutionThread {
         return uiThread
-    }
-
-    @Provides
-    @PerApplication
-    internal fun provideFirebaseAuthenticator(): FirebaseAuth {
-        return FirebaseAuth.getInstance()
     }
 }
