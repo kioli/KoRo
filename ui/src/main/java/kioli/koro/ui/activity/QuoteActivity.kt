@@ -4,8 +4,6 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import dagger.android.AndroidInjection
@@ -42,20 +40,6 @@ class QuoteActivity : AppCompatActivity() {
                     if (it != null) handleState(it.status, it.data, it.message)
                 })
         handleState(ResourceState.SUCCESS, null, null)
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_quote, menu);
-        return super.onPrepareOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?)= when (item?.itemId) {
-        R.id.menu_logout -> {
-            quoteViewModel.logout()
-            finish()
-            true
-        }
-        else -> { super.onOptionsItemSelected(item) }
     }
 
     private fun handleState(state: ResourceState, data: QuoteModelPresentation?, message: String?) {

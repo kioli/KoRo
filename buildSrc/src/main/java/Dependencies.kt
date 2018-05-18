@@ -12,8 +12,6 @@ object Versions {
     const val appCompat = "27.1.1"
     const val androidArchitecture = "1.1.0"
     const val dagger = "2.14.1"
-    const val firebase = "12.0.1"
-    const val googleService = "3.2.1"
     const val gson = "2.8.2"
     const val javaxInject = "1"
     const val kotlin = "1.2.41"
@@ -28,7 +26,6 @@ object Versions {
     const val espresso = "3.0.1"
     const val jUnit = "5.1.1"
     const val mockito = "2.18.3"
-    const val daggerMock = "0.8.4"
 
     //App Center
     const val appCenterSdk = "1.3.0"
@@ -43,8 +40,6 @@ object Deps {
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     const val daggerSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
-    const val firebaseAuthentication = "com.google.firebase:firebase-auth:${Versions.firebase}"
-    const val firebaseFirestore = "com.google.firebase:firebase-firestore:${Versions.firebase}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val javaxInject = "javax.inject:javax.inject:${Versions.javaxInject}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
@@ -66,7 +61,6 @@ object Deps {
     const val junit = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit}"
     const val mockitoAndroidTest = "org.mockito:mockito-android:${Versions.mockito}"
     const val mockitoUnitTest = "org.mockito:mockito-core:${Versions.mockito}"
-    const val daggerMock = "com.github.fabioCollini.daggermock:daggermock-kotlin:${Versions.daggerMock}"
     const val architectureTesting = "android.arch.core:core-testing:${Versions.androidArchitecture}"
 
     const val testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"

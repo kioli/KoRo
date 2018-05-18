@@ -48,7 +48,6 @@ dependencies {
     implementation (Deps.daggerSupport) {
         exclude group:'com.android.support:', module:'appcompat-v7'
     }
-    implementation Deps.firebaseAuthentication
     implementation Deps.kotlin
     implementation Deps.roomRxJava
     implementation Deps.rxAndroid
@@ -67,5 +66,4 @@ dependencies {
     androidTestImplementation Deps.espresso
     androidTestImplementation Deps.espressoRunner
     androidTestImplementation Deps.mockitoAndroidTest
-    androidTestImplementation Deps.daggerMock
 }
