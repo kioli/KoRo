@@ -6,26 +6,29 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import dagger.android.AndroidInjection
 import kioli.koro.presentation.data.Resource
 import kioli.koro.presentation.data.ResourceState
 import kioli.koro.presentation.model.QuoteModelPresentation
 import kioli.koro.presentation.viewmodel.QuoteViewModel
 import kioli.koro.presentation.viewmodel.ViewModelFactory
+import kioli.koro.ui.App
 import kioli.koro.ui.R
 import kotlinx.android.synthetic.main.activity_quote.*
-import javax.inject.Inject
 
 class QuoteActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    class Dependencies(
+            val viewModelFactory: ViewModelFactory
+    )
+
+    private val dependencies by lazy { (applicationContext as App).creator.quoteActivity() }
+    private val viewModelFactory by lazy { dependencies.viewModelFactory }
+
     private lateinit var quoteViewModel: QuoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quote)
-        AndroidInjection.inject(this)
         quoteViewModel = ViewModelProviders.of(this, viewModelFactory).get(QuoteViewModel::class.java)
 
         btn_load_quote.setOnClickListener { quoteViewModel.loadQuote() }

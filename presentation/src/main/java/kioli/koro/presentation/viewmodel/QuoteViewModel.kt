@@ -16,13 +16,11 @@ import kioli.koro.presentation.data.ResourceState
 import kioli.koro.presentation.eventResult
 import kioli.koro.presentation.mapper.QuotePresentationMapper
 import kioli.koro.presentation.model.QuoteModelPresentation
-import javax.inject.Inject
 
-open class QuoteViewModel @Inject internal constructor(
-        private val loadQuoteUseCase: LoadQuoteUseCase,
-        private val saveQuoteUseCase: SaveQuoteUseCase,
-        private val clearQuoteUseCase: ClearQuoteUseCase,
-        private val mapper: QuotePresentationMapper) : ViewModel() {
+class QuoteViewModel(private val loadQuoteUseCase: LoadQuoteUseCase,
+                     private val saveQuoteUseCase: SaveQuoteUseCase,
+                     private val clearQuoteUseCase: ClearQuoteUseCase,
+                     private val mapper: QuotePresentationMapper) : ViewModel() {
 
     private val quoteLiveData: MutableLiveData<Resource<QuoteModelPresentation>> = MutableLiveData()
 

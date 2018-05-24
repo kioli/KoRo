@@ -2,12 +2,11 @@ package kioli.koro.presentation.mapper
 
 import kioli.koro.domain.model.QuoteModelDomain
 import kioli.koro.presentation.model.QuoteModelPresentation
-import javax.inject.Inject
 
 /**
  * Map [QuoteModelPresentation] to and from a [QuoteModelDomain] when data moves between this and the DOMAIN layer
  */
-open class QuotePresentationMapper @Inject constructor() : PresentationMapper<QuoteModelPresentation, QuoteModelDomain> {
+class QuotePresentationMapper : PresentationMapper<QuoteModelPresentation, QuoteModelDomain> {
 
     /**
      * Map a [QuoteModelPresentation] instance to a [QuoteModelDomain] instance

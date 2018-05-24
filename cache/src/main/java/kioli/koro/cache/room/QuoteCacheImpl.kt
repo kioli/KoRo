@@ -9,14 +9,13 @@ import kioli.koro.cache.room.mapper.QuoteCacheMapper
 import kioli.koro.cache.room.model.QuoteModelCache
 import kioli.koro.data.model.QuoteModelData
 import kioli.koro.data.repository.QuoteCache
-import javax.inject.Inject
 
 /**
  * Cached implementation for retrieving and saving Quote instances.
  * This class implements the [QuoteCache] from the Data layer as it is that layers responsibility
  * to define the operations the data store implementation layers can carry out.
  */
-class QuoteCacheImpl @Inject constructor(val db: Db, private val entityMapper: QuoteCacheMapper) : QuoteCache {
+class QuoteCacheImpl(val db: Db, private val entityMapper: QuoteCacheMapper) : QuoteCache {
 
     /**
      * Retrieve an instance from the database, used for tests.

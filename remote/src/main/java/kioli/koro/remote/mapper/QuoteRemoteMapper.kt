@@ -7,7 +7,7 @@ import javax.inject.Inject
 /**
  * Map [QuoteModelRemote] to and from a [QuoteModelData] when data moves between this and the DATA layer
  */
-open class QuoteRemoteMapper @Inject constructor() : RemoteMapper<QuoteModelRemote, QuoteModelData> {
+open class QuoteRemoteMapper constructor() : RemoteMapper<QuoteModelRemote, QuoteModelData> {
 
     /**
      * Map a [QuoteModelRemote] to a [QuoteModelData] instance

@@ -6,15 +6,13 @@ import kioli.koro.data.mapper.QuoteDataMapper
 import kioli.koro.data.store.QuoteStoreFactory
 import kioli.koro.domain.model.QuoteModelDomain
 import kioli.koro.domain.repository.QuoteRepository
-import javax.inject.Inject
 
 /**
  * Provides an implementation of the [QuoteRepository] interface for communicating to and from
  * data sources
  */
-class QuoteDataRepository @Inject constructor(private val factory: QuoteStoreFactory,
-                                              private val mapper: QuoteDataMapper) :
-        QuoteRepository {
+class QuoteDataRepository(private val factory: QuoteStoreFactory,
+                          private val mapper: QuoteDataMapper) : QuoteRepository {
 
     override fun clearQuotes(): Completable =
             factory.retrieveCacheDataStore().clearQuotes()

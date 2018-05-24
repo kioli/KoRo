@@ -3,13 +3,12 @@ package kioli.koro.data.store
 import kioli.koro.data.model.QuoteModelData
 import kioli.koro.data.repository.QuoteCache
 import kioli.koro.data.repository.QuoteStore
-import javax.inject.Inject
 
 /**
  * Implementation of the [QuoteStore] interface to provide a means of communicating
  * with the local data source
  */
-open class QuoteStoreCache @Inject constructor(private val quoteCache: QuoteCache) : QuoteStore {
+class QuoteStoreCache(private val quoteCache: QuoteCache) : QuoteStore {
 
     /**
      * Clear all Quotes from the cache

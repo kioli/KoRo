@@ -2,12 +2,11 @@ package kioli.koro.data.mapper
 
 import kioli.koro.data.model.QuoteModelData
 import kioli.koro.domain.model.QuoteModelDomain
-import javax.inject.Inject
 
 /**
  * Map [QuoteModelData] to and from a [QuoteModelDomain] when data moves between this and the DOMAIN layer
  */
-open class QuoteDataMapper @Inject constructor() : DataMapper<QuoteModelData, QuoteModelDomain> {
+open class QuoteDataMapper : DataMapper<QuoteModelData, QuoteModelDomain> {
 
     /**
      * Map a [QuoteModelData] instance to a [QuoteModelDomain] instance

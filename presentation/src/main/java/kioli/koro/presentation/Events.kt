@@ -1,6 +1,6 @@
 package kioli.koro.presentation
 
-val eventResult = "Result"
+const val eventResult = "Result"
 
 enum class Events(val id: String) {
     LoadQuoteStart("load quote start"),

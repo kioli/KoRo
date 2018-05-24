@@ -6,14 +6,13 @@ import kioli.koro.domain.executor.ThreadExecutor
 import kioli.koro.domain.interactor.base.CompletableUseCase
 import kioli.koro.domain.model.QuoteModelDomain
 import kioli.koro.domain.repository.QuoteRepository
-import javax.inject.Inject
 
 /**
  * Use case used for clearing all stored [QuoteModelDomain]
  */
-open class ClearQuoteUseCase @Inject constructor(val repository: QuoteRepository,
-                                                 threadExecutor: ThreadExecutor,
-                                                 postExecutionThread: PostExecutionThread) :
+open class ClearQuoteUseCase(val repository: QuoteRepository,
+                             threadExecutor: ThreadExecutor,
+                             postExecutionThread: PostExecutionThread) :
         CompletableUseCase<String>(threadExecutor, postExecutionThread) {
 
     public override fun buildUseCaseObservable(params: String): Completable {

@@ -2,12 +2,11 @@ package kioli.koro.cache.room.mapper
 
 import kioli.koro.cache.room.model.QuoteModelCache
 import kioli.koro.data.model.QuoteModelData
-import javax.inject.Inject
 
 /**
  * Map [QuoteModelCache] to and from a [QuoteModelData] when data moves between this and the DATA layer
  */
-open class QuoteCacheMapper @Inject constructor() : CacheMapper<QuoteModelCache, QuoteModelData> {
+open class QuoteCacheMapper : CacheMapper<QuoteModelCache, QuoteModelData> {
 
     /**
      * Map a [QuoteModelData] instance to a [QuoteModelCache] instance

@@ -44,10 +44,8 @@ dependencies {
     implementation Deps.appCenterAnalytics
     implementation Deps.appCenterCrashes
     implementation Deps.archExtensions
-    implementation Deps.dagger
-    implementation (Deps.daggerSupport) {
-        exclude group:'com.android.support:', module:'appcompat-v7'
-    }
+    implementation Deps.kodeinJvm
+    implementation Deps.kodeinAndroid
     implementation Deps.kotlin
     implementation Deps.roomRxJava
     implementation Deps.rxAndroid
@@ -56,11 +54,6 @@ dependencies {
     implementation Deps.supportDesignLib
 
     kapt Deps.archCompiler
-    kapt Deps.daggerCompiler
-    kapt Deps.daggerProcessor
-
-    kaptAndroidTest Deps.daggerCompiler
-    kaptAndroidTest Deps.daggerProcessor
 
     androidTestImplementation Deps.appCenterEspresso
     androidTestImplementation Deps.espresso
