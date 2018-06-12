@@ -27,6 +27,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
+}
+
+configurations {
+    ktlint
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
+    args "src/**/*.kt"
 }
 
 configurations.all {
@@ -56,11 +70,14 @@ dependencies {
     implementation Deps.supportDesignLib
 
     kapt Deps.archCompiler
+    kapt Deps.dataBindingCompiler
     kapt Deps.daggerCompiler
     kapt Deps.daggerProcessor
 
     kaptAndroidTest Deps.daggerCompiler
     kaptAndroidTest Deps.daggerProcessor
+
+    ktlint Deps.lintForKotlin
 
     androidTestImplementation Deps.appCenterEspresso
     androidTestImplementation Deps.espresso

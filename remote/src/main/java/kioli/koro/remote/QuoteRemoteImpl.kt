@@ -4,6 +4,7 @@ import io.reactivex.Flowable
 import kioli.koro.data.model.QuoteModelData
 import kioli.koro.data.repository.QuoteRemote
 import kioli.koro.remote.mapper.QuoteRemoteMapper
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
@@ -21,6 +22,6 @@ class QuoteRemoteImpl @Inject constructor(private val service: QuoteService,
     override fun getQuotes(): Flowable<QuoteModelData> {
         return Flowable.defer {
             service.loadQuote().map { mapper.mapFromRemote(it) }
-        }
+        }.delay(2, TimeUnit.SECONDS)
     }
 }

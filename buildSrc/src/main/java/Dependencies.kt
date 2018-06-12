@@ -5,8 +5,10 @@ object Versions {
     const val androidTargetSdk = 27
     const val androidVersionCode = 1
     const val androidVersionName = "1.0"
-    const val gradleBuildTool = "3.1.2"
+    const val gradleBuildTool = "3.1.3"
+    const val dataBindingCompiler = gradleBuildTool
     const val gradleDexCountPlugin = "0.8.2"
+    const val lintForKotlin = "0.15.0"
 
     //Libraries
     const val appCompat = "27.1.1"
@@ -42,7 +44,9 @@ object Deps {
     const val daggerSupport = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val javaxInject = "javax.inject:javax.inject:${Versions.javaxInject}"
+    const val dataBindingCompiler = "com.android.databinding:compiler:${Versions.dataBindingCompiler}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    const val lintForKotlin = "com.github.shyiko:ktlint:${Versions.lintForKotlin}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val okHttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"

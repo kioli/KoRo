@@ -1,53 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="kioli.koro.ui.activity.IntroActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/quote_result"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="@android:dimen/app_icon_size"/>
-
-        <Button
-            android:id="@+id/btn_load_quote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_load_quote"/>
-
-        <Button
-            android:id="@+id/btn_save_quote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_save_quote"/>
-
-        <Button
-            android:id="@+id/btn_clear_quote"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_clear_quote"/>
-    </LinearLayout>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="kioli.koro.presentation.viewmodel.QuoteViewModel"/>
+    </data>
 
     <RelativeLayout
-        android:id="@+id/loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorDim"
-        android:visibility="gone">
+        android:background="@{vm.isError ? @android:color/holo_red_light : @android:color/white}"
+        tools:context="kioli.koro.ui.activity.QuoteActivity">
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/quote_result"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{vm.quoteText}"
+                android:padding="@android:dimen/app_icon_size"/>
+
+            <Button
+                android:id="@+id/btn_load_quote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> vm.loadQuote()}"
+                android:text="@string/button_load_quote"/>
+
+            <Button
+                android:id="@+id/btn_save_quote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> vm.saveQuote(vm.quoteText)}"
+                android:text="@string/button_save_quote"/>
+
+            <Button
+                android:id="@+id/btn_clear_quote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> vm.clearQuotes()}"
+                android:text="@string/button_clear_quote"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorDim"
+            android:visibility="@{vm.loading ? View.VISIBLE : View.GONE}">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+</layout>

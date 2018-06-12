@@ -1,8 +1,10 @@
 package kioli.koro.presentation.viewmodel
 
+import android.app.Application
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.databinding.ObservableBoolean
 import com.microsoft.appcenter.analytics.Analytics
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.subscribers.DisposableSubscriber
@@ -22,9 +24,14 @@ open class QuoteViewModel @Inject internal constructor(
         private val loadQuoteUseCase: LoadQuoteUseCase,
         private val saveQuoteUseCase: SaveQuoteUseCase,
         private val clearQuoteUseCase: ClearQuoteUseCase,
-        private val mapper: QuotePresentationMapper) : ViewModel() {
+        private val mapper: QuotePresentationMapper,
+        app: Application ) : ObservableViewModel(app) {
 
     private val quoteLiveData: MutableLiveData<Resource<QuoteModelPresentation>> = MutableLiveData()
+
+    var loading = false
+    var isError = false
+    var quoteText = ""
 
     override fun onCleared() {
         loadQuoteUseCase.dispose()
@@ -36,7 +43,9 @@ open class QuoteViewModel @Inject internal constructor(
     fun getLiveData(): LiveData<Resource<QuoteModelPresentation>> = quoteLiveData
 
     fun loadQuote() {
-        quoteLiveData.postValue(Resource(ResourceState.LOADING, null, null))
+        loading = true
+        notifyChange()
+//        quoteLiveData.postValue(Resource(ResourceState.LOADING, null, null))
         loadQuoteUseCase.execute(LoadQuoteSubscriber())
         Analytics.trackEvent(Events.LoadQuoteStart.id)
     }
@@ -46,15 +55,22 @@ open class QuoteViewModel @Inject internal constructor(
         override fun onComplete() {}
 
         override fun onNext(quote: QuoteModelDomain?) {
+            loading = false
+            isError = false
             Analytics.trackEvent(Events.LoadQuoteResultOk.id, mutableMapOf(Pair(eventResult, quote.toString())))
             quote?.let {
-                quoteLiveData.postValue(Resource(ResourceState.SUCCESS, mapper.mapToPresentation(it), null))
+                quoteText = mapper.mapToPresentation(it).text
+//                quoteLiveData.postValue(Resource(ResourceState.SUCCESS, mapper.mapToPresentation(it), null))
             }
+            notifyChange()
         }
 
         override fun onError(exception: Throwable) {
+            loading = false
+            isError = true
+            notifyChange()
             Analytics.trackEvent(Events.LoadQuoteResultFail.id, mutableMapOf(Pair(eventResult, exception.localizedMessage)))
-            quoteLiveData.postValue(Resource(ResourceState.ERROR, null, exception.localizedMessage))
+//            quoteLiveData.postValue(Resource(ResourceState.ERROR, null, exception.localizedMessage))
         }
     }
 

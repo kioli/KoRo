@@ -2,6 +2,7 @@ package kioli.koro.ui.activity
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -13,6 +14,7 @@ import kioli.koro.presentation.model.QuoteModelPresentation
 import kioli.koro.presentation.viewmodel.QuoteViewModel
 import kioli.koro.presentation.viewmodel.ViewModelFactory
 import kioli.koro.ui.R
+import kioli.koro.ui.databinding.ActivityQuoteBinding
 import kotlinx.android.synthetic.main.activity_quote.*
 import javax.inject.Inject
 
@@ -20,22 +22,23 @@ class QuoteActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private lateinit var quoteViewModel: QuoteViewModel
+    private lateinit var binding: ActivityQuoteBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quote)
         AndroidInjection.inject(this)
-        quoteViewModel = ViewModelProviders.of(this, viewModelFactory).get(QuoteViewModel::class.java)
 
-        btn_load_quote.setOnClickListener { quoteViewModel.loadQuote() }
-        btn_save_quote.setOnClickListener { quoteViewModel.saveQuote(quote_result.text.toString()) }
-        btn_clear_quote.setOnClickListener { quoteViewModel.clearQuotes() }
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_quote)
+        binding.vm = ViewModelProviders.of(this, viewModelFactory).get(QuoteViewModel::class.java)
+
+        btn_load_quote.setOnClickListener { binding.vm?.loadQuote() }
+        btn_save_quote.setOnClickListener { binding.vm?.saveQuote(quote_result.text.toString()) }
+        btn_clear_quote.setOnClickListener { binding.vm?.clearQuotes() }
     }
 
     override fun onStart() {
         super.onStart()
-        quoteViewModel.getLiveData().observe(this,
+        binding.vm?.getLiveData()?.observe(this,
                 Observer<Resource<QuoteModelPresentation>> {
                     if (it != null) handleState(it.status, it.data, it.message)
                 })
